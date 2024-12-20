@@ -1,21 +1,20 @@
 package com.example.API;
-
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import netscape.javascript.JSObject;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LastFmData {
 
     String api_key;
     String url = "https://ws.audioscrobbler.com/2.0/";
     private static final HttpClient client = HttpClient.newHttpClient();
-    private JSObject response;
+    private WeeklyTrackChart weeklyUserTrack;
 
     public LastFmData(String api_key){
         this.api_key=api_key;
@@ -37,24 +36,34 @@ public class LastFmData {
     }
 
     public List<User> getUserFriendsWithStatus(String user) {
-        // Pobierz znajomych
         List<User> users = getUserFriend(user);
 
-        // Jeśli nie udało się pobrać znajomych, zwróć pustą listę
         if (users == null) {
             return new ArrayList<>();
         }
 
-        // Sprawdź aktywność dla każdego użytkownika
         for (User u : users) {
-            Boolean isActive = CheckIfUserIsActive(u.getName());
-            u.setIsUserActive(isActive);  // Ustaw status aktywności użytkownika
+            Boolean isActive = checkIfUserIsActive(u.getName());
+            u.setIsUserActive(isActive);
+            int count = 0;
+            for(WeeklyTrackChart.Track track : weeklyUserTrack.getTrackChart().getTrack()){
+                if(track.getName() != null && track.getPlaycount() != null && track.getArtist() != null){
+                    u.setMostListenedMusic(track.getName());
+                    u.setNumberOfPlaycounts(track.getPlaycount());
+                    u.setListOfArtist(track.getArtist().getText());
+                    count++;}
+
+
+                if(count>=10){
+                    break;
+                }
+            }
         }
 
-        return users;  // Zwróć zaktualizowaną listę użytkowników
+        return users;
     }
 
-    public Boolean CheckIfUserIsActive(String user) {
+    public Boolean checkIfUserIsActive(String user) {
         String requestURL = getRequestURL("user.getweeklytrackchart", user);
         String jsonResponse = fetchData(requestURL);
 
@@ -62,28 +71,28 @@ public class LastFmData {
             return parseUserActivity(jsonResponse, user);
         }
 
-        return false;  // Jeśli nie udało się sprawdzić aktywności, zwróć false
+        return false;
     }
 
     private boolean parseUserActivity(String jsonResponse, String username) {
         try {
-            // Tworzymy obiekt ObjectMapper do przetwarzania JSON
+
             ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            weeklyUserTrack = objectMapper.readValue(jsonResponse, WeeklyTrackChart.class);
 
-            // Zdeserializuj JSON na obiekt
-            WeeklyTrackChart weeklyTrackChart = objectMapper.readValue(jsonResponse, WeeklyTrackChart.class);
+            //System.out.println(weeklyTrackChart.getTrackChart().getTrack().get(0).getName());
 
-            // Jeśli lista tracków jest pusta, ustaw aktywność na false
-            if (weeklyTrackChart.getTrack().isEmpty()) {
+            if (weeklyUserTrack.getTrackChart().getTrack().isEmpty()) {
                 setUserActiveStatus(username, false);
                 return false;
-            } else {
-                setUserActiveStatus(username, true);
-                return true;
             }
+
+            setUserActiveStatus(username, true);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false; // Jeśli wystąpił błąd, zwróć false
+            return false;
         }
     }
 
@@ -92,7 +101,7 @@ public class LastFmData {
         if (users != null) {
             for (User user : users) {
                 if (user.getName().equals(username)) {
-                    user.setIsUserActive(isActive);  // Ustaw aktywność użytkownika
+                    user.setIsUserActive(isActive);
                 }
             }
         }
@@ -111,6 +120,11 @@ public class LastFmData {
             e.printStackTrace();
             return null;
         }
+    }
+
+    private List<String> checkMostListenedSongs(WeeklyTrackChart weeklyTrackChart){
+        System.out.println(weeklyTrackChart.getTrackChart().getTrack());
+        return null;
     }
 
     private String fetchData(String url) {

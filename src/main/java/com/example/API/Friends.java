@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
-@JsonIgnoreProperties({"@attr","playlists","playcount","image"})  // Ignoruje pole @attr
+@JsonIgnoreProperties({"@attr","playlists","playcount","image"})
 public class Friends {
     @JsonProperty("user")
     private List<User> users;
