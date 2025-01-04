@@ -7,25 +7,22 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import java.sql.*;
-
 import java.sql.*;
 import java.util.List;
 
 public class DatabaseConnection {
 
     private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
-    private static final String USER = "postgres"; // Zmień na swoją nazwę użytkownika
-    private static final String PASSWORD = "postgres"; // Zmień na swoje hasło
+    private static final String USER = "postgres";
+    private static final String PASSWORD = "postgres";
 
-    // Metoda do nawiązania połączenia
+
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
     public static void batchInsert(Connection connection, List<User> users) {
-        String insertQuery = "INSERT INTO users (name, country, isuseractive, mostlistenedmusic, listofartist, numberofplaycounts) VALUES (?, ?, ? , ? , ?, ?)";
+        String insertQuery = "INSERT INTO users (name, country, mostlistenedmusic, listofartist, numberofplaycounts) VALUES (?, ? , ? , ?, ?)";
 
         try (PreparedStatement statement = connection.prepareStatement(insertQuery)) {
             int count = 0;
@@ -33,10 +30,9 @@ public class DatabaseConnection {
             for (User user : users) {
                 statement.setString(1, user.getName());
                 statement.setString(2, user.getCountry());
-                statement.setBoolean(3, user.getIsUserActive());
-                statement.setString(4, user.getMostListenedMusic().toString());
-                statement.setString(5, user.getListOfArtist().toString());
-                statement.setString(6, user.getNumberOfPlaycounts().toString());
+                statement.setString(3, user.getMostListenedMusic().toString());
+                statement.setString(4, user.getListOfArtist().toString());
+                statement.setString(5, user.getNumberOfPlaycounts().toString());
 
                 statement.addBatch();
 
@@ -45,7 +41,7 @@ public class DatabaseConnection {
                 }
             }
 
-            statement.executeBatch(); // Wykonaj pozostałe wpisy
+            statement.executeBatch();
             System.out.println("Dane zostały pomyślnie wstawione do tabeli w batchach.");
 
         } catch (SQLException e) {
@@ -54,7 +50,6 @@ public class DatabaseConnection {
         }
     }
 
-    // Metoda do wyciągania danych
     public static void fetchData() {
         String selectQuery = "SELECT * FROM users";
 
