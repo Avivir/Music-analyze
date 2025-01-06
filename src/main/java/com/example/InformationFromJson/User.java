@@ -1,4 +1,4 @@
-package com.example.API;
+package com.example.InformationFromJson;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -18,19 +18,8 @@ public class User {
         return name;
     }
 
-    public boolean getIsUserActive() {return  isUserActive;}
-    public void setIsUserActive(boolean isUserActive) {this.isUserActive = isUserActive;}
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getCountry() {
         return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 
     public List<String> getMostListenedMusic(){

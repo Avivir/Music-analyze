@@ -1,13 +1,11 @@
 package com.example.Database;
-import com.example.API.Friends;
-import com.example.API.User;
+import com.example.InformationFromJson.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.*;
 import java.util.List;
 
 public class DatabaseConnection {
@@ -42,11 +40,11 @@ public class DatabaseConnection {
             }
 
             statement.executeBatch();
-            System.out.println("Dane zostały pomyślnie wstawione do tabeli w batchach.");
+            System.out.println("Data was successfully inserted into the table in batches.");
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Błąd podczas wstawiania danych do tabeli.");
+            System.out.println("Error while inserting data into table.");
         }
     }
 
@@ -57,7 +55,7 @@ public class DatabaseConnection {
              PreparedStatement statement = connection.prepareStatement(selectQuery);
              ResultSet resultSet = statement.executeQuery()) {
 
-            System.out.println("Dane w tabeli users:");
+            System.out.println("Data in the users table:");
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
                 int age = resultSet.getInt("age");
@@ -66,7 +64,7 @@ public class DatabaseConnection {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Błąd podczas wyciągania danych z tabeli.");
+            System.out.println("Error while extracting data from table.");
         }
     }
 }

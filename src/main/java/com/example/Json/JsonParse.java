@@ -17,7 +17,7 @@ public class JsonParse {
             return objectMapper.readValue(jsonString, typeReference);
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Błąd podczas parsowania JSON: " + e.getMessage());
+            System.out.println("Error while parsing JSON: " + e.getMessage());
             return null;
         }
     }

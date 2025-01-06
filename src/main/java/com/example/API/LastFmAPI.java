@@ -1,19 +1,16 @@
-package com.example.API2;
+package com.example.API;
 
-import com.example.API.User;
-import com.example.API.WeeklyTrackChart;
+import com.example.InformationFromJson.WeeklyTrackChart;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.List;
 
 public class LastFmAPI {
     String api_key;
     String url = "https://ws.audioscrobbler.com/2.0/";
     private static final HttpClient client = HttpClient.newHttpClient();
-    private WeeklyTrackChart weeklyUserTrack;
 
     public LastFmAPI(String api_key){
         this.api_key=api_key;

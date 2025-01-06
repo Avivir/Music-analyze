@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f711e58b-6cac-44f5-8997-5d7c93ed5b1c" name="Changes" comment="gotowy projekt">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/API2/LastFmAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Json/JsonParse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/API/Friends.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/API/Friends.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/API/LastFmData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/API/Root.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/InformationFromJson/Root.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/API/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/InformationFromJson/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/API/WeeklyTrackChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/InformationFromJson/WeeklyTrackChart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/API2/LastFmAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/API/LastFmAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Database/DatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Main.java" afterDir="false" />
     </list>
@@ -31,7 +38,24 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;OPEN&quot;
+    }
+  ],
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Avivir/Music-analyze.git&quot;,
+    &quot;accountId&quot;: &quot;3039b049-9b81-433e-8419-c2b9d7bc46a0&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -46,10 +70,14 @@
     "Gradle.Build Music.executor": "Run",
     "Gradle.Music [:DatabaseConnection.main()].executor": "Run",
     "Gradle.Music [:Main.main()].executor": "Run",
+    "Gradle.Music-analyze [:com.example.Main.main()].executor": "Run",
+    "Gradle.Upgrade Gradle wrapper.executor": "Run",
     "Kotlin script (Beta).build.gradle.kts.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -59,20 +87,15 @@
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.general",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "kotlin-gradle-user-dirs": [
-      "C:\\Users\\Lenovo"
-    ]
   }
 }]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
@@ -91,6 +114,8 @@
       <workItem from="1734866367874" duration="1514000" />
       <workItem from="1734880355994" duration="4573000" />
       <workItem from="1735945230521" duration="12480000" />
+      <workItem from="1736192613938" duration="878000" />
+      <workItem from="1736193518043" duration="1637000" />
     </task>
     <task id="LOCAL-00001" summary="Pobieranie danych user name z API">
       <option name="closed" value="true" />

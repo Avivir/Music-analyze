@@ -1,4 +1,6 @@
-package com.example.API;
+package com.example.InformationFromJson;
+
+import com.example.API.Friends;
 
 public class Root {
     private Friends friends;

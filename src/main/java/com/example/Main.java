@@ -1,8 +1,10 @@
 package com.example;
 
-import com.example.API.*;
-import com.example.API2.LastFmAPI;
+import com.example.API.LastFmAPI;
 import com.example.Database.DatabaseConnection;
+import com.example.InformationFromJson.Root;
+import com.example.InformationFromJson.User;
+import com.example.InformationFromJson.WeeklyTrackChart;
 import com.example.Json.JsonParse;
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -10,16 +12,16 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
+
         LastFmAPI lastData = new LastFmAPI("c8b3d6a3ab8ee34be63041d024194261");
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection connection = databaseConnection.getConnection();
         JsonParse jsonParser = new JsonParse();
-        List<String> usersNames = new ArrayList<>(Arrays.asList("mll"));
+        List<String> usersNames = new ArrayList<>(Arrays.asList("music"));
 
         String getFriends = "user.getfriends";
         String getUserWeeklyTrackChart = "user.getweeklytrackchart";

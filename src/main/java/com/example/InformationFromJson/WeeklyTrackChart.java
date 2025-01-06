@@ -1,4 +1,4 @@
-package com.example.API;
+package com.example.InformationFromJson;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -50,7 +50,6 @@ public class WeeklyTrackChart {
             return "Track{name='" + name + "', artist=" + getArtist().getText() + ", playcount='" + playcount + "'}";
         }
 
-        // Gettery i settery
         public String getName() {
             return name;
         }
@@ -115,7 +114,6 @@ public class WeeklyTrackChart {
 
         private String mbid;
 
-        // Gettery i settery
         public String getText() {
             return text;
         }
@@ -140,7 +138,6 @@ public class WeeklyTrackChart {
         @JsonProperty("#text")
         private String text;
 
-        // Gettery i settery
         public String getSize() {
             return size;
         }
@@ -167,8 +164,5 @@ public class WeeklyTrackChart {
             return rank;
         }
 
-        public void setRank(String rank) {
-            this.rank = rank;
-        }
     }
 }
