@@ -1,6 +1,5 @@
-package com.example.API;
+package com.example.InformationFromJson;
 
-import com.example.InformationFromJson.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

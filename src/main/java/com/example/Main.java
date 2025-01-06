@@ -21,7 +21,7 @@ public class Main {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection connection = databaseConnection.getConnection();
         JsonParse jsonParser = new JsonParse();
-        List<String> usersNames = new ArrayList<>(Arrays.asList("music"));
+        List<String> usersNames = new ArrayList<>(Arrays.asList("mucho"));
 
         String getFriends = "user.getfriends";
         String getUserWeeklyTrackChart = "user.getweeklytrackchart";
